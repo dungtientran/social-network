@@ -4,7 +4,9 @@
 
 
 @layer base {
-    body{}
+    body{
+       @apply bg-[#1A1A1A] text-white;
+    }
 }
 
 
@@ -27,7 +29,19 @@
          dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800;
     }
     .mb-login-form {
-        @apply w-[70%] p-3 space-y-6 
+        @apply w-[70%] p-3 space-y-6 ;
+    }
+    .story-item {
+        @apply flex flex-col gap-2 w-[12%] hover:text-red-400 cursor-pointer;
+    }
+    .story-item-img {
+        @apply w-16 h-16 border-[2px] rounded-full border-[#2148A2]  flex items-center justify-center shadow-lg duration-700;
+    }
+    .story-item:hover > .story-item-img{
+        @apply border-red-400;
+    }
+    .profile-item {
+        @apply flex flex-col items-center justify-center
     }
 }
 

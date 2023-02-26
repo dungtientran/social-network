@@ -1,8 +1,16 @@
-import React from 'react'
+import React from 'react';
+import NavBarItem from './NavBarItem';
 
-const NavBar = () => {
+const NavBar = ({listNav}) => {
+
   return (
-    <div>NavBar</div>
+    <div>
+      <div className='flex justify-between items-center w-[50%] m-auto  p-3 rounded-b-xl text-white'>
+        {listNav.map((item, index) => (
+          <NavBarItem key={index} item={item.name} title = {item.title} />
+        ))}
+      </div>
+    </div>
   )
 }
 
