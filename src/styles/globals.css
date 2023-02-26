@@ -3,3 +3,31 @@
 @tailwind utilities;
 
 
+@layer base {
+    body{}
+}
+
+
+@layer components {
+    .banner-login {
+        @apply w-1/2 bg-[#ff416c] flex flex-col items-center justify-center absolute top-0 left-0 h-full duration-500;
+    }
+    .login-input {
+        @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm 
+        focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700
+         dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
+          dark:focus:border-blue-500 outline-none;
+    }
+    .form-login {
+        @apply w-full md:w-1/2 flex flex-col justify-between absolute top-0 right-0 bottom-0 transition-all duration-500 ease-in-out;
+    }
+    .button-login {
+        @apply text-white bg-black hover:bg-blue-800 
+        focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium text-sm w-full sm:w-auto px-5 py-2 text-center
+         dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800;
+    }
+    .mb-login-form {
+        @apply w-[70%] p-3 space-y-6 
+    }
+}
+
