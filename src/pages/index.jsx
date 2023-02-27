@@ -71,6 +71,7 @@ const user = {
 }
 
 const Home = () => {
+  
   return (
     <div>
       <Header />

@@ -16,15 +16,15 @@ const CreatePost = ({ user }) => {
                 </div>
             </div>
             <div className='w-[90%]'>
-                <div>
+                <div onClick={() => setIsOpenModelPost(true)}>
                     <textarea
                         name=""
                         id=""
                         cols="10"
-                        placeholder={`${user.name} ơi, Bạn đang nghĩ gì thế`}
+                        placeholder={`${user?.name} ơi, Bạn đang nghĩ gì thế`}
                         value={titlePost}
                         className='w-full bg-[#1F1F1F] outline-none rounded-lg p-3 text-white cursor-pointer'
-                        onClick={() => setIsOpenModelPost(true)}
+                        onChange={(e) => setTitlePost(e.target.value)}
                     />
                 </div>
                 <div className='flex items-center gap-4'>
@@ -59,7 +59,7 @@ const CreatePost = ({ user }) => {
                                     <img src={user?.avatar} alt="" className='w-full h-full object-cover rounded-full' />
                                 </div>
                                 <div className='space-y-1'>
-                                    <p className='font-semibold ml-2'>{user.name}</p>
+                                    <p className='font-semibold ml-2'>{user?.name}</p>
                                     <div className='flex items-center gap-1 bg-[#1F1F1F] py-1 px-3 rounded-xl'>
                                         <MdOutlinePeopleAlt />
                                         <p>Bạn bè</p>
@@ -71,7 +71,7 @@ const CreatePost = ({ user }) => {
                                     <input 
                                     type="text" 
                                     autoFocus={true} 
-                                    placeholder={`${user.name} ơi, Bạn đang nghĩ gì thế?`} 
+                                    placeholder={`${user?.name} ơi, Bạn đang nghĩ gì thế?`} 
                                     className='box w-full py-3 outline-none'
                                     value={titlePost}
                                     onChange={(e) => setTitlePost(e.target.value)}
