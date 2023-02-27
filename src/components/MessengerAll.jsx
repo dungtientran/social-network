@@ -3,7 +3,7 @@ import { AiOutlineSend } from 'react-icons/ai';
 
 const MessengerAll = () => {
     return (
-        <div className='rounded-[5%] bg-[#282828] h-[450px] mt-4 p-3 relative'>
+        <div className='rounded-[5%] bg-[#282828] md:h-[400px] lg:h-[450px] mt-4 p-3 relative'>
             <div className='py-2'>
                 <p>Chat tổng</p>
             </div>
