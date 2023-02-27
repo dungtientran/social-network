@@ -1,3 +1,4 @@
+import { userLogin } from '@/lib/auth';
 import Head from 'next/head';
 import React, { useState } from 'react';
 import { FcGoogle } from 'react-icons/fc'
@@ -9,9 +10,10 @@ const Login = () => {
   const [password, setPassword] = useState('');
 
   const user = { name, email, password };
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    console.log(user);
+    const res = await userLogin({email, password})
+    console.log(res);
     setName('');
     setEmail('');
     setPassword('');

@@ -40,7 +40,7 @@ const user = {
 
 const Header = () => {
     return (
-        <div className='fixed bg-[#1A1A1A] top-0 left-0 w-full flex justify-between items-center px-9'>
+        <div className='fixed bg-[#1A1A1A] top-0 left-0 z-40 w-full flex justify-between items-center px-9'>
             <div className='w-[20%]'>
                 <Search />
             </div>

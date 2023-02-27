@@ -74,7 +74,7 @@ const Home = () => {
   return (
     <div>
       <Header />
-      <div className='flex justify-between min-h-screen pt-[100px] px-9'>
+      <div className='flex justify-between min-h-screen mt-[100px] px-9'>
         <div className='min-w-[20%] px-3 h-full'>
           {/* <div className='h-[62px]'>
           Search
