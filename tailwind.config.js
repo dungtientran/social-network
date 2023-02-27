@@ -11,7 +11,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'form': '#CECED0'
+        'form': '#CECED0',
+        'box': '#282828',
       }
     },
   },

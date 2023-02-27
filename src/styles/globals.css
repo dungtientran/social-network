@@ -5,12 +5,15 @@
 
 @layer base {
     body{
-       @apply bg-[#1A1A1A] text-white;
+       @apply bg-[#1A1A1A] text-[#E5E5E5];
     }
 }
 
 
 @layer components {
+    .box {
+        @apply bg-box rounded-lg;
+    }
     .banner-login {
         @apply w-1/2 bg-[#ff416c] flex flex-col items-center justify-center absolute top-0 left-0 h-full duration-500;
     }
