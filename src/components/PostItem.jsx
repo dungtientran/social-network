@@ -5,8 +5,8 @@ const PostItem = ({ post }) => {
     return (
         <div className='p-3 bg-[#282828] rounded-lg space-y-3'>
             <div className='flex justify-between items-center'>
-                <div className='flex w-[95%]'>
-                    <div className='w-[8%] h-16'>
+                <div className='flex w-[95%] gap-2'>
+                    <div className='w-16 h-16'>
                         <img src={post.avatar} alt="" className='w-16 h-16 object-cover rounded-lg' />
                     </div>
                     <div>

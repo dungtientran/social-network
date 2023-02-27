@@ -8,18 +8,18 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const user = { name, email, password }
+  const user = { name, email, password };
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(user);
-    setName('')
-    setEmail('')
-    setPassword('')
+    setName('');
+    setEmail('');
+    setPassword('');
   }
 
   return (
 
-    <div className='bg-[#E6E8EF] md:bg-form flex justify-center items-center w-full h-screen overflow-hidden'>
+    <div className='bg-[#E6E8EF] md:bg-form flex justify-center items-center w-full h-screen overflow-hidden text-black'>
       <Head>
         <title>{isLogin ? 'Đăng ký' : 'Đăng nhập'}</title>
       </Head>
@@ -45,7 +45,7 @@ const Login = () => {
         {/* form login */}
         <div className={`form-login ${isLogin && 'translate-x-[-100%]'}`}>
           <div className='text-center'>
-            <p className='text-sm'>GinHan</p>
+            <p className='text-sm'></p>
           </div>
           <div>
             <h1 className='text-3xl h-[10%] p-10 flex items-center justify-center'>{isLogin ? 'Đăng ký' : 'Đăng nhập'}</h1>
