@@ -1,9 +1,11 @@
 import Link from 'next/link';
 import React from 'react';
 import { MdOutlineNotifications } from 'react-icons/md';
-import { IoIosArrowDropdown } from 'react-icons/io';
+
 
 const Logout = ({ user }) => {
+    // console.log(user);
+    
     return (
         <div className='p-3 mt-4 flex justify-end'>
             <div className='flex items-center gap-1'>
@@ -12,7 +14,7 @@ const Logout = ({ user }) => {
                 </div>
                 <Link href="/profile" className='inline-block p-1 border border-[#1A1A1A] hover:border-[#FDFD01] rounded-full'>
                     <img
-                        src={user.avatar}
+                        src={user?.avatar}
                         alt=""
                         className='w-12 h-12 rounded-full object-cover'
                     />

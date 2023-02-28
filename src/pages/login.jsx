@@ -1,7 +1,10 @@
 import { apiUserLogin } from '@/lib/auth';
+import { userLoginAction } from '@/redux/sliceRducer/userSlice';
 import Head from 'next/head';
-import React, { useState } from 'react';
+import { useRouter } from 'next/router';
+import React, { use, useEffect, useState } from 'react';
 import { FcGoogle } from 'react-icons/fc'
+import { useDispatch, useSelector } from 'react-redux';
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(false);
@@ -9,16 +12,29 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const dispatch = useDispatch();
+  const router = useRouter()
+
   const user = { name, email, password };
+
+  const {userInfor} = useSelector(state => state.user);
+ 
   const handleSubmit = async(e) => {
     e.preventDefault();
-    const res = await apiUserLogin({email, password})
-    console.log(res);
-    window.localStorage.setItem('token', res.data.user.accessToken)
+    // const res = await apiUserLogin({email, password})
+    // console.log(res);
+    // window.localStorage.setItem('token', res.data.user.accessToken)
     // setName('');
     // setEmail('');
     // setPassword('');
+    dispatch(userLoginAction(user))
   }
+
+  useEffect(() => {
+    if(userInfor){
+      router.push("/")
+    }
+  },[userInfor])
 
   return (
 

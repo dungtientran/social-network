@@ -11,8 +11,6 @@ import { apiGetPost } from '@/lib/post/getPost';
 import React, { useEffect, useState } from 'react';
 
 
-
-
 const listStory = [
   {
     image: 'https://res.cloudinary.com/dbkgkyh4h/image/upload/v1674980785/aztdhoncs6wzqlbb7tqz.jpg',
@@ -49,31 +47,10 @@ const listStory = [
 
 ]
 
-// const listPost = [
-//   {
-//     avatar: 'https://res.cloudinary.com/dbkgkyh4h/image/upload/v1674980785/aztdhoncs6wzqlbb7tqz.jpg',
-//     name: 'Dũng',
-//     time: '1 phút trước',
-//     img: 'https://res.cloudinary.com/dbkgkyh4h/image/upload/v1674980641/vii8rn8memosqggzhn6v.jpg',
-//     title: 'Hahaha'
-//   },
-//   {
-//     avatar: 'https://res.cloudinary.com/dbkgkyh4h/image/upload/v1674980785/aztdhoncs6wzqlbb7tqz.jpg',
-//     name: 'Dũng',
-//     time: '1 phút trước',
-//     img: 'https://res.cloudinary.com/dbkgkyh4h/image/upload/v1674980641/vii8rn8memosqggzhn6v.jpg',
-//     title: 'Hahaha'
-//   },
-
-// ]
-
 const user = {
   avatar: 'https://res.cloudinary.com/dbkgkyh4h/image/upload/v1674980785/aztdhoncs6wzqlbb7tqz.jpg',
   name: 'Dũng'
 }
-
-
-
 
 const Home = () => {
   const [listPost, setListPost] = useState();

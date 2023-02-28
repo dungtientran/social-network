@@ -4,14 +4,12 @@ const instance = axios.create({
     baseURL: 'http://localhost:8080'
 });
 
-
-
 instance.interceptors.request.use(function (config) {
     // Do something before request is sent
     // gắn token vào header
-    let token = localStorage.getItem('token')
+    let userInfor = localStorage.getItem('userInfor')
     config.headers = {
-        token: token
+        token: userInfor.token
     }
     return config;
 }, function (error) {
