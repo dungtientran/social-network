@@ -1,4 +1,4 @@
-import { userLogin } from '@/lib/auth';
+import { apiUserLogin } from '@/lib/auth';
 import Head from 'next/head';
 import React, { useState } from 'react';
 import { FcGoogle } from 'react-icons/fc'
@@ -12,11 +12,12 @@ const Login = () => {
   const user = { name, email, password };
   const handleSubmit = async(e) => {
     e.preventDefault();
-    const res = await userLogin({email, password})
+    const res = await apiUserLogin({email, password})
     console.log(res);
-    setName('');
-    setEmail('');
-    setPassword('');
+    window.localStorage.setItem('token', res.data.user.accessToken)
+    // setName('');
+    // setEmail('');
+    // setPassword('');
   }
 
   return (

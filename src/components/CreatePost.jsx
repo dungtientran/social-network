@@ -3,10 +3,16 @@ import { FcAddImage, FcVideoCall } from 'react-icons/fc';
 import { MdOutlineCancel, MdOutlinePeopleAlt } from 'react-icons/md';
 import { RiImageAddLine } from 'react-icons/ri';
 import { AiOutlineVideoCameraAdd } from 'react-icons/ai';
+import { apiNewPost } from '@/lib/post/newPost';
 
 const CreatePost = ({ user }) => {
     const [isOpenModelPost, setIsOpenModelPost] = useState(false);
     const [titlePost, setTitlePost] = useState('')
+
+    const handleCreatePost = async() => {
+        const newPost = await apiNewPost({title: titlePost})
+        console.log(newPost);
+    }
 
     return (
         <div className='p-3 bg-[#282828] rounded-lg flex text-white'>
@@ -92,7 +98,7 @@ const CreatePost = ({ user }) => {
                                     </div>
                                 </div>
                                 <div className='mt-4'>
-                                    <button className='w-full text-center py-2 bg-[#FFFD01] text-black uppercase font-semibold rounded-lg'>Đăng</button>
+                                    <button onClick={handleCreatePost} className='w-full text-center py-2 bg-[#FFFD01] text-black uppercase font-semibold rounded-lg'>Đăng</button>
                                 </div>
                             </div>
                         </div>

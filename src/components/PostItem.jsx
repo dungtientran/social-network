@@ -3,7 +3,7 @@ import { AiOutlineLike, AiOutlineDislike, AiOutlineMessage } from 'react-icons/a
 
 const PostItem = ({ post }) => {
     return (
-        <div className='p-3 bg-[#282828] rounded-lg space-y-3'>
+        <div className='p-3 bg-[#282828] rounded-lg space-y-3 w-full'>
             <div className='flex justify-between items-center'>
                 <div className='flex w-[95%] gap-2'>
                     <div className='w-16 h-16'>
@@ -19,10 +19,14 @@ const PostItem = ({ post }) => {
                 </div>
             </div>
             <div>
-                <p>{post.title}</p>
-                <div className='py-3 h-[500px] w-full overflow-hidden'>
-                    <img src={post.img} alt="" className='w-full object-cover rounded-lg' />
-                </div>
+                {post?.title && (
+                    <p className='text-xl px-2 py-4'>{post?.title}</p>
+                )}
+                {post?.image && (
+                    <div className='py-3 h-[500px] w-full overflow-hidden'>
+                        <img src={post?.image} alt="" className='w-full object-cover rounded-lg' />
+                    </div>
+                )}
             </div>
             <div className='flex items-center gap-3'>
                 <button title='Like'><AiOutlineLike size={30} /></button>
