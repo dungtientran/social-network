@@ -35,7 +35,7 @@ const authSlice = createSlice({
         builder
             .addCase(userLoginAction.fulfilled, (state, action) => {
                 state.userInfor = action.payload;
-                localStorage.setItem('userInfor', JSON.stringify(state.userInfor))
+                localStorage.setItem('userId', JSON.stringify(state.userInfor.id))
                 localStorage.setItem('token', JSON.stringify(state.userInfor.token))
                 Cookies.set('userInfor', JSON.stringify(state.userInfor))
             })

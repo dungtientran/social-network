@@ -59,7 +59,7 @@ const Home = () => {
     const fethGetPost = async() => {
       const data = await apiGetPost();
       // console.log(data);
-      setListPost(data.data)
+      setListPost(data?.data)
     } 
     fethGetPost() 
   },[]);

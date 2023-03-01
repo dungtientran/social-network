@@ -4,13 +4,27 @@ import { MdOutlineCancel, MdOutlinePeopleAlt } from 'react-icons/md';
 import { RiImageAddLine } from 'react-icons/ri';
 import { AiOutlineVideoCameraAdd } from 'react-icons/ai';
 import { apiNewPost } from '@/lib/post/newPost';
+import { useDispatch } from 'react-redux';
+import { getPostUserAction } from '@/redux/sliceRducer/postSlice';
+import { useEffect } from 'react';
 
 const CreatePost = ({ user }) => {
     const [isOpenModelPost, setIsOpenModelPost] = useState(false);
-    const [titlePost, setTitlePost] = useState('')
+    const [titlePost, setTitlePost] = useState('');
+    const [userId, setUserId] = useState();
+    const dispatch = useDispatch();
 
-    const handleCreatePost = async() => {
-        const newPost = await apiNewPost({title: titlePost})
+    useEffect(() => {
+        setUserId(JSON.parse(localStorage.getItem('userId')));
+    }, [])
+
+    const handleCreatePost = async () => {
+        const newPost = await apiNewPost({ title: titlePost })
+        if (newPost.status === 200) {
+            setIsOpenModelPost(false)
+            dispatch(getPostUserAction(userId))
+            setTitlePost('')
+        }
         console.log(newPost);
     }
 
@@ -74,14 +88,14 @@ const CreatePost = ({ user }) => {
                             </div>
                             <div className='py-2'>
                                 <div>
-                                    <input 
-                                    type="text" 
-                                    autoFocus={true} 
-                                    placeholder={`${user?.name} ơi, Bạn đang nghĩ gì thế?`} 
-                                    className='box w-full py-3 outline-none'
-                                    value={titlePost}
-                                    onChange={(e) => setTitlePost(e.target.value)}
-                                     />
+                                    <input
+                                        type="text"
+                                        autoFocus={true}
+                                        placeholder={`${user?.name} ơi, Bạn đang nghĩ gì thế?`}
+                                        className='box w-full py-3 outline-none'
+                                        value={titlePost}
+                                        onChange={(e) => setTitlePost(e.target.value)}
+                                    />
                                 </div>
                                 <div className='border rounded-lg h-[200px] mt-2 p-2'>
                                     <div className=' flex justify-between h-full rounded-lg'>

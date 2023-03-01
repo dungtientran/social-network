@@ -6,27 +6,36 @@ import { RiSettingsLine } from 'react-icons/ri';
 export const iconsHeader = [
     {
         name: <BiHomeAlt size={22} />,
-        title: 'Trang chủ'
+        title: 'Trang chủ',
+        patch: '/'
     },
     {
         name: <BsPeople size={22} />,
-        title: 'Mọi người'
+        title: 'Mọi người',
+        patch: '/people'
     },
     {
         name: <BiMessageSquareDots size={22} />,
-        title: 'Tin nhắn'
+        title: 'Tin nhắn',
+        patch: '/messeger'
     },
     {
         name: <BiTimeFive size={22} />,
-        title: 'Hoạt động'
+        title: 'Hoạt động',
+        patch: '/'
+
     },
     {
         name: <BsFlag size={22} />,
-        title: 'Gắn cờ'
+        title: 'Gắn cờ',
+        patch: '/'
+
     },
     {
         name: <RiSettingsLine size={22} />,
-        title: 'Cài đặt'
+        title: 'Cài đặt',
+        patch: '/'
+
     },
 
 ]

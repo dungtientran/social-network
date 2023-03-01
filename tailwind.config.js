@@ -13,6 +13,7 @@ module.exports = {
       colors: {
         'form': '#CECED0',
         'box': '#282828',
+        'yl': '#FFFD01',
         'black-rgba': 'rgba(0, 0, 0, 0.7)',
       }
     },
