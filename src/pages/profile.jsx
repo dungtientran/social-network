@@ -1,8 +1,17 @@
 import CreatePost from '@/components/CreatePost';
-import React from 'react';
+import { getUserProfileAction } from '@/redux/sliceRducer/userSlice';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Profile = () => {
-  
+  const {userProfile} = useSelector(state => state.user)
+  const dispatch = useDispatch();
+  // console.log(result);
+  useEffect(() => {
+    dispatch(getUserProfileAction('63fe255dfaef29718e888835'))
+  }, [dispatch])
+
+  console.log(userProfile);
   return (
     <div className=''>
       {/* Head */}
@@ -10,7 +19,7 @@ const Profile = () => {
         <div className='w-[70%] h-full m-auto'>
           <div className='w-full h-full overflow-hidden]'>
             <img
-              src="https://res.cloudinary.com/dbkgkyh4h/image/upload/v1674980641/vii8rn8memosqggzhn6v.jpg "
+              src={userProfile?.imageBg}
               alt=""
               className='w-full h-[70%] object-cover '
             />
@@ -19,13 +28,13 @@ const Profile = () => {
               <div className='flex items-center gap-4 z-20'>
                 <div className='w-[200px] h-[200px] p-2 border rounded-full bg-[#242526]'>
                   <img
-                    src="https://res.cloudinary.com/dbkgkyh4h/image/upload/v1674980785/aztdhoncs6wzqlbb7tqz.jpg"
+                    src={userProfile?.avatar}
                     alt=""
                     className='w-full h-full object-cover rounded-full'
                   />
                 </div>
                 <div >
-                  <h1 className='text-4xl font-bold'>Trần Dũng</h1>
+                  <h1 className='text-4xl font-bold'>{userProfile?.name}</h1>
                   <p className='mt-2'>140 bạn bè</p>
                 </div>
               </div>
@@ -52,5 +61,15 @@ const Profile = () => {
     </div>
   )
 }
+
+// export const getServerSideProps = async() => {
+//   const data = await apiGetUserProfile('63fe255dfaef29718e888835')
+//   console.log(data);
+//   return {
+//     props: {
+//       result: 123
+//     }
+//   }
+// }
 
 export default Profile

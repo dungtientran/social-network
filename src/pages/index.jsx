@@ -57,9 +57,9 @@ const Home = () => {
   const [listPostSort, setListPostSort] = useState();
   useEffect(() => {
     const fethGetPost = async() => {
-      const {data} = await apiGetPost();
+      const data = await apiGetPost();
       // console.log(data);
-      setListPost(data)
+      setListPost(data.data)
     } 
     fethGetPost() 
   },[]);

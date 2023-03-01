@@ -1,9 +1,12 @@
 import { apiUserLogin } from '@/lib/auth';
+import { apiGetUserProfile } from '@/lib/user/userProfile';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import Cookies from 'js-cookie';
 const initialState = {
-    userInfor: null
+    userInfor: null,
+    userProfile: null
 }
+
 
 export const userLoginAction = createAsyncThunk('login', async (user) => {
     try {
@@ -13,7 +16,15 @@ export const userLoginAction = createAsyncThunk('login', async (user) => {
         console.log(error);
     }
 })
-
+export const getUserProfileAction = createAsyncThunk('getUserProfileAction', async (user) => {
+    try {
+        const response = await apiGetUserProfile(user)
+        // console.log(response);
+        return response;
+    } catch (error) {
+        console.log(error);
+    }
+})
 
 const authSlice = createSlice({
     name: 'user',
@@ -25,7 +36,11 @@ const authSlice = createSlice({
             .addCase(userLoginAction.fulfilled, (state, action) => {
                 state.userInfor = action.payload;
                 localStorage.setItem('userInfor', JSON.stringify(state.userInfor))
+                localStorage.setItem('token', JSON.stringify(state.userInfor.token))
                 Cookies.set('userInfor', JSON.stringify(state.userInfor))
+            })
+            .addCase(getUserProfileAction.fulfilled, (state, action) => {
+                state.userProfile = action.payload
             })
     )
 });

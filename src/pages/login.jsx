@@ -6,6 +6,8 @@ import React, { use, useEffect, useState } from 'react';
 import { FcGoogle } from 'react-icons/fc'
 import { useDispatch, useSelector } from 'react-redux';
 
+
+
 const Login = () => {
   const [isLogin, setIsLogin] = useState(false);
   const [name, setName] = useState('');
@@ -13,7 +15,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
 
   const dispatch = useDispatch();
-  const router = useRouter()
+  const router = useRouter();
 
   const user = { name, email, password };
 
@@ -21,12 +23,6 @@ const Login = () => {
  
   const handleSubmit = async(e) => {
     e.preventDefault();
-    // const res = await apiUserLogin({email, password})
-    // console.log(res);
-    // window.localStorage.setItem('token', res.data.user.accessToken)
-    // setName('');
-    // setEmail('');
-    // setPassword('');
     dispatch(userLoginAction(user))
   }
 

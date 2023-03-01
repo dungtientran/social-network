@@ -1,15 +1,15 @@
 import axios from "axios";
 
 const instance = axios.create({
-    baseURL: 'http://localhost:8080'
+    baseURL: 'http://localhost:8081'
 });
 
 instance.interceptors.request.use(function (config) {
     // Do something before request is sent
     // gắn token vào header
-    let userInfor = localStorage.getItem('userInfor')
+    let token = JSON.parse(localStorage.getItem('token'))
     config.headers = {
-        token: userInfor.token
+        token: token
     }
     return config;
 }, function (error) {
