@@ -16,7 +16,7 @@ const Model = ({ title, openModel, children }) => {
                         <MdOutlineCancel size={30} />
                     </span>
                 </div>
-                <div className='flex flex-col items-center justify-center px-2 h-full'>
+                <div className='flex flex-col items-center justify-center h-full p-3'>
                     {children}
                 </div>
 

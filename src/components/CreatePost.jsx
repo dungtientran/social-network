@@ -7,26 +7,31 @@ import { apiNewPost } from '@/lib/post/newPost';
 import { useDispatch } from 'react-redux';
 import { getPostUserAction } from '@/redux/sliceRducer/postSlice';
 import { useEffect } from 'react';
+import CreatePostModel from './CreatePostModel';
+import Model from './Model';
 
 const CreatePost = ({ user }) => {
     const [isOpenModelPost, setIsOpenModelPost] = useState(false);
     const [titlePost, setTitlePost] = useState('');
-    const [userId, setUserId] = useState();
-    const dispatch = useDispatch();
+    // const [userId, setUserId] = useState();
+    // const dispatch = useDispatch();
 
-    useEffect(() => {
-        setUserId(JSON.parse(localStorage.getItem('userId')));
-    }, [])
+    // useEffect(() => {
+    //     setUserId(JSON.parse(localStorage.getItem('userId')));
+    // }, [])
 
-    const handleCreatePost = async () => {
-        const newPost = await apiNewPost({ title: titlePost })
-        if (newPost.status === 200) {
-            setIsOpenModelPost(false)
-            dispatch(getPostUserAction(userId))
-            setTitlePost('')
-        }
-        console.log(newPost);
-    }
+    // const handleCreatePost = async () => {
+    //     const newPost = await apiNewPost({ title: titlePost })
+    //     if (newPost.status === 200) {
+    //         setIsOpenModelPost(false)
+    //         dispatch(getPostUserAction(userId))
+    //         setTitlePost('')
+    //     }
+    //     console.log(newPost);
+    // }
+
+    const openModelPost = (item) => setIsOpenModelPost(item)
+
 
     return (
         <div className='p-3 bg-[#282828] rounded-lg flex text-white'>
@@ -61,7 +66,7 @@ const CreatePost = ({ user }) => {
 
             {/* Model post */}
 
-            {isOpenModelPost && (
+            {/* {isOpenModelPost && (
                 <div className='bg-black-rgba fixed top-0 left-0 w-full h-full z-20 flex items-center justify-center'>
                     <div className='box p-3 w-[40%] m-auto'>
                         <div className='text-center py-4 border-b-[1px] border-gray-300'>
@@ -116,9 +121,17 @@ const CreatePost = ({ user }) => {
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
-            )}
+            )} */}
+
+            {isOpenModelPost && 
+                <Model title='Tạo bài viết' openModel = {openModelPost} >
+                    <CreatePostModel user = {user} openModel={openModelPost} />
+                </Model>
+            }
+
         </div>
     )
 }

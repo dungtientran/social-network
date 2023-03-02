@@ -45,7 +45,13 @@
         @apply border-red-400;
     }
     .profile-item {
-        @apply flex flex-col items-center justify-center
+        @apply flex flex-col items-center justify-center;
+    }
+    .image-circle {
+        @apply w-full h-full object-cover rounded-full;
+    }
+    .text-underline {
+        @apply hover:underline cursor-pointer;
     }
 }
 

@@ -6,7 +6,7 @@ const ProfileCard = ({ user }) => {
     <div className='rounded-[5%] bg-[#282828] h-[400px] relative'>
       <div className='h-[30%] bg-black'>
         <img
-          src="https://res.cloudinary.com/dbkgkyh4h/image/upload/v1674980641/vii8rn8memosqggzhn6v.jpg "
+          src={user?.imageBg}
           className='object-cover w-full h-full rounded-t-[5%]'
           alt=""
         />
@@ -21,11 +21,11 @@ const ProfileCard = ({ user }) => {
           <p className='text-sm text-[#818181]'>Bạn bè</p>
         </div>
         <div className='w-[100px] h-[100px] rounded-xl border-[2px] border-[#1A1A1A] absolute left-[50%] top-0 translate-x-[-50%] translate-y-[-50%]'>
-          <img src={user.avatar} alt="" className='w-[100px] h-[100px] rounded-xl object-cover' />
+          <img src={user?.avatar} alt="" className='w-[100px] h-[100px] rounded-xl object-cover' />
         </div>
       </div>
       <div className='profile-item pt-3'>
-        <p>{user.name}</p>
+        <p>{user?.name}</p>
         <p className='text-[#818181]'>ProAoe</p>
       </div>
       <div className='py-6 profile-item'>
@@ -34,7 +34,7 @@ const ProfileCard = ({ user }) => {
       </div>
       <div className='profile-item py-3 absolute left-0 bottom-0  w-full'>
         <Link
-          href='/profile'
+          href={`/profile/${user?.id}`}
           className='px-6 py-2 text-[#ADADAD] hover:text-white bg-[#2F2F2F] rounded-lg'
         >
           My Profile
