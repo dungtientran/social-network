@@ -9,6 +9,7 @@ const PostItem = ({ post, user }) => {
     const [comment, setComment] = useState();
     const dispatch = useDispatch();
     // console.log(post.comments);
+    console.log(post);
     const handleComment = async () => {
         const sendCmt = {
             postid: post._id,

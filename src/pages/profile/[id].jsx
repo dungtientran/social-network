@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AiOutlineHome, AiOutlineEdit } from 'react-icons/ai';
 import Head from 'next/head';
 import Model from '@/components/Model';
+import ProfileEdit from '@/components/ProfileEdit';
 
 const Profile = () => {
   const router = useRouter();
@@ -60,9 +61,9 @@ const Profile = () => {
                   </div>
                 </div>
                 <div className='px-6'>
-                  <button onClick={() => setIsOpenModel(true)} className='flex items-center gap-2 hover:bg-black py-1 px-4 rounded-md'>
-                    <AiOutlineEdit size={25}/>
-                    <span className='text-lg font-semibold'>Chỉnh sửa trang cá nhân</span>
+                  <button onClick={() => setIsOpenModel(true)} className='flex items-center gap-2 hover:bg-black py-1 px-4 rounded-md bg-[#3A3B3C]'>
+                    <AiOutlineEdit size={20}/>
+                    <span className=' font-semibold'>Chỉnh sửa trang cá nhân</span>
                   </button>
                 </div>
               </div>
@@ -97,7 +98,10 @@ const Profile = () => {
           <Posts listPost={postUser} user={userProfile} />
         </div>
       </div>
-      {isOpenModel && <Model title={'Chỉnh sửa thông tin cá nhân'} openModel={openModel} user={userProfile} />}
+      {isOpenModel && <Model title={'Chỉnh sửa thông tin cá nhân'} openModel={openModel} user={userProfile} >
+        <ProfileEdit user={userProfile}/>
+      </Model>}
+      
     </div>
   )
 }
