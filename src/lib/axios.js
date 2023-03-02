@@ -7,7 +7,7 @@ const instance = axios.create({
 instance.interceptors.request.use(function (config) {
     // Do something before request is sent
     // gắn token vào header
-    let token = JSON.parse(localStorage.getItem('token'))
+    let token = JSON.parse(localStorage.getItem('token')) || undefined
     config.headers = {
         token: token
     }

@@ -24,6 +24,7 @@ const Login = () => {
   const handleSubmit = async(e) => {
     e.preventDefault();
     dispatch(userLoginAction(user))
+    // const res = await apiUserLogin(user)
   }
 
   useEffect(() => {

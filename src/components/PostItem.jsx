@@ -35,7 +35,7 @@ const PostItem = ({ post, user }) => {
         <div className='p-3 bg-[#282828] rounded-lg space-y-3 w-full'>
 
             <PostItemtHead post={post} user={user} openModel={openModel} checkPostHeadIn={false} />
-
+            {/* Model */}
             {isOpenModelComment && <Model openModel={openModel} title={`Bài viết của ${user?.name}`} >
 
                 <div className='w-full h-full'>

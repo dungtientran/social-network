@@ -12,7 +12,7 @@ const Logout = () => {
 
     useEffect(() => {
         setUserId(JSON.parse(localStorage.getItem('userId')))
-    }, []);
+    }, []); 
     useEffect(() => {
         if (userId) {
             dispatch(getUserProfileAction(userId))

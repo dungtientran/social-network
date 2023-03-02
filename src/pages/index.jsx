@@ -55,8 +55,8 @@ const user = {
 }
 
 const Home = () => {
-  // const [listPost, setListPost] = useState();
-  // const [listPostSort, setListPostSort] = useState();
+  const [listPost, setListPost] = useState();
+  const [listPostSort, setListPostSort] = useState();
   // useEffect(() => {
   //   const fethGetPost = async() => {
   //     const data = await apiGetPost();
@@ -78,7 +78,7 @@ const Home = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        setUserId(JSON.parse(localStorage.getItem('userId')))
+        setUserId(JSON?.parse(localStorage.getItem('userId')))
     }, []);
     useEffect(() => {
         if (userId) {
@@ -103,7 +103,7 @@ const Home = () => {
           {/* <Posts listPost={listPostSort} /> */}
         </div>
         <div className='min-w-[20%] h-full'>
-          <PendingFriend />
+          <PendingFriend/>
           <FriendOnline />
         </div>
       </div>

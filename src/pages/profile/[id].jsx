@@ -14,6 +14,7 @@ import ProfileImage from '@/components/ProfileImage';
 import ProfoleVideo from '@/components/ProfoleVideo';
 
 const Profile = () => {
+
   const router = useRouter();
   const { id } = router.query;
   const { userProfile } = useSelector(state => state.user);
@@ -22,6 +23,8 @@ const Profile = () => {
   const [keySelection, setKeySelection] = useState(1);
 
   const dispatch = useDispatch();
+  // console.log(id);
+  
 
   useEffect(() => {
     if (id) {
@@ -31,7 +34,8 @@ const Profile = () => {
   }, [id]);
 
   const openModel = (item) => setIsOpenModel(item);
-  const setKey = (item) => setKeySelection(item)
+  const setKey = (item) => setKeySelection(item);
+  // console.log(userProfile);
   return (
     <div>
       <Head>

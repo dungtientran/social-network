@@ -19,7 +19,7 @@ export const userLoginAction = createAsyncThunk('login', async (user) => {
 export const getUserProfileAction = createAsyncThunk('getUserProfileAction', async (user) => {
     try {
         const response = await apiGetUserProfile(user)
-        // console.log(response);
+        console.log(response);
         return response;
     } catch (error) {
         console.log(error);
@@ -35,8 +35,8 @@ const authSlice = createSlice({
         builder
             .addCase(userLoginAction.fulfilled, (state, action) => {
                 state.userInfor = action.payload;
-                localStorage.setItem('userId', JSON.stringify(state.userInfor.id))
-                localStorage.setItem('token', JSON.stringify(state.userInfor.token))
+                localStorage.setItem('userId', JSON.stringify(state.userInfor?.id))
+                localStorage.setItem('token', JSON.stringify(state.userInfor?.token))
                 Cookies.set('userInfor', JSON.stringify(state.userInfor))
             })
             .addCase(getUserProfileAction.fulfilled, (state, action) => {
