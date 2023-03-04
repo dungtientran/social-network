@@ -10,7 +10,7 @@ const initialState = {
 export const getPostUserAction = createAsyncThunk('getPostUserAction', async (userId) => {
     try {
         const response = await apiGetPost(userId)
-        // console.log(response.data);
+        console.log(response.data);
         // console.log(userId);
         return response.data;
     } catch (error) {

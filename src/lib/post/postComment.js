@@ -1,5 +1,5 @@
 
-import axiosConfig from '../axios';
+import {axiosConfig} from '../axios';
 
 
 export const apiPostComment = async(cmt) => {

@@ -1,22 +1,26 @@
 import Layout from '@/components/Layout';
 import { apiGetAllUser } from '@/lib/user/getAllUser';
+import axios from 'axios';
+import Cookies from 'js-cookie';
 import Head from 'next/head';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
-import { BsArrowLeft } from 'react-icons/bs'
+import { BsArrowLeft } from 'react-icons/bs';
+import { axiosConfig, SeverSideAxios } from '../lib/axios';
 
-const People = () => {
+const People = ({ data }) => {
+  // console.log(data);
   const [allUser, setAllUser] = useState();
   const [isSendAdd, setIsSendAdd] = useState(false);
-
-  useEffect(() => {
-    const fechAllUser = async () => {
-      const res = await apiGetAllUser();
-      console.log(res);
-      setAllUser(res)
-    }
-    fechAllUser()
-  }, [])
+  // const token = Cookies.get('token')
+  // useEffect(() => {
+  //   const fechAllUser = async () => {
+  //     const res = await apiGetAllUser();
+  //     // console.log(res);
+  //     setAllUser(res)
+  //   }
+  //   fechAllUser()
+  // }, [])
 
   return (
     <Layout>
@@ -36,7 +40,7 @@ const People = () => {
               </div>
             </div>
             <div className='mt-2 h-full overflow-y-auto'>
-              {allUser?.map((item, index) => (
+              {data?.map((item, index) => (
                 <div key={index} className='flex py-2 gap-3 cursor-pointer'>
                   <div className='w-16 h-16 rounded-full'>
                     <img src={item?.profile?.avatar} alt={item?.name} className='w-full h-full object-cover rounded-full' />
@@ -66,14 +70,19 @@ const People = () => {
   )
 }
 
-// export const getServerSideProps = async() => {
-//   const data = await apiGetAllUser()
-//   console.log(data);
-//   return {
-//     props: {
-//       data
-//     }
-//   }
-// }
+export const getServerSideProps = async (context) => {
+
+  const token = context.req.cookies.token
+  const res = await SeverSideAxios(token).get('/api/user/get-all')
+  // console.log(res);
+
+  return {
+    props: {
+      // data: res.data
+      data: res.data
+    }
+  }
+
+}
 
 export default People 

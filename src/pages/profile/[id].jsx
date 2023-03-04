@@ -7,11 +7,11 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Head from 'next/head';
 import Model from '@/components/Model';
-import ProfileEdit from '@/components/ProfileEdit';
-import ProfileHead from '@/components/ProfileHead';
-import ProfileFriend from '@/components/ProfileFriend';
-import ProfileImage from '@/components/ProfileImage';
-import ProfoleVideo from '@/components/ProfoleVideo';
+import ProfileHead from '@/components/Profile/ProfileHead';
+import ProfileFriend from '@/components/Profile/ProfileFriend';
+import ProfileImage from '@/components/Profile/ProfileImage';
+import ProfoleVideo from '@/components/Profile/ProfoleVideo';
+
 
 const Profile = () => {
 
@@ -24,7 +24,7 @@ const Profile = () => {
 
   const dispatch = useDispatch();
   // console.log(id);
-  
+
 
   useEffect(() => {
     if (id) {
@@ -43,7 +43,7 @@ const Profile = () => {
       </Head>
 
       {/* Profile header */}
-      <ProfileHead userProfile={userProfile} openModel={openModel} setKey = {setKey} />
+      <ProfileHead userProfile={userProfile} openModel={openModel} setKey={setKey} />
 
       {/* Post */}
       {keySelection === 1 && (

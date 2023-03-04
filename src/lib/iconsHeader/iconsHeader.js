@@ -17,7 +17,7 @@ export const iconsHeader = [
     {
         name: <BiMessageSquareDots size={22} />,
         title: 'Tin nhắn',
-        patch: '/messeger'
+        patch: '/messenger'
     },
     {
         name: <BiTimeFive size={22} />,

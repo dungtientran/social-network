@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Model from './Model';
+import Model from '../Model';
 import ProfileEditImage from './ProfileEditImage';
 
 const ProfileEdit = ({ user }) => {
@@ -58,12 +58,12 @@ const ProfileEdit = ({ user }) => {
 
             {isOpenModelAvartar && (
                 <Model openModel={openModelAvatar} title='Cập nhật ảnh đại diện'>
-                    <ProfileEditImage openModel={openModelAvatar} titleChage = 'avatar' nameInput='avatar'/>
+                    <ProfileEditImage openModel={openModelAvatar} titleChage='avatar' nameInput='avatar' />
                 </Model>
             )}
             {isOpenModelImgBg && (
                 <Model openModel={openModelImageBg} title='Cập nhật ảnh nền'>
-                    <ProfileEditImage openModel={openModelImageBg} titleChage = 'ảnh nền' nameInput='imageBg'/>
+                    <ProfileEditImage openModel={openModelImageBg} titleChage='ảnh nền' nameInput='imageBg' />
                 </Model>
             )}
         </div>

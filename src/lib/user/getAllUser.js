@@ -1,4 +1,4 @@
-import axiosConfig from '../axios';
+import {axiosConfig} from '../axios';
 
 
 export const apiGetAllUser = async() => {
