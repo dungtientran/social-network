@@ -7,7 +7,31 @@
     body{
        @apply bg-[#1A1A1A] text-[#E5E5E5];
     }
+
+    body::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
+    body::-webkit-scrollbar-track {
+        background: black; 
+    }
+    body::-webkit-scrollbar-thumb {
+        background: #5E5E5F;
+        border-radius: 100vh;
+        /* border: 3px solid #f6f7ed; */
+
+    }
+    /* body::-webkit-scrollbar-thumb:hover{
+        background: #c0a0b9;
+    } */
 }
+
+/* @layer utilities {
+    .homeScrollBar::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
+} */
 
 
 @layer components {
@@ -58,8 +82,22 @@
         focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium text-sm w-full sm:w-auto px-5 py-2 text-center
          dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 flex items-center justify-center gap-2;
     }
-  
+    .dotSelect {
+        @apply p-2 rounded-full hover:bg-hover-bg 
+    }
+    .scrollChatAll::-webkit-scrollbar {
+        @apply w-[8px] h-[10px];
+    }
+    .scrollChatAll::-webkit-scrollbar-track{
+        @apply bg-[#424242] rounded-full;
+    }
+    .scrollChatAll::-webkit-scrollbar-thumb {
+        @apply bg-[#5E5E5F] rounded-full cursor-pointer
+    }
 }
+
+
+
 
 
 .date > p:not(:last-child)::after{

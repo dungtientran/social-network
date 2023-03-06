@@ -3,11 +3,13 @@ import Logout from './Logout';
 import NavBar from './NavBar';
 import Search from './Search';
 import { iconsHeader } from '@/lib/iconsHeader/iconsHeader';
+import Cookies from 'js-cookie';
 
 const Header = () => {
-    
+    // const token = Cookies.get('token');
+    // console.log(token);
     return (
-        <div className='fixed bg-[#1A1A1A] top-0 left-0 z-40 w-full flex justify-between items-center px-9'>
+        <div className={`fixed bg-[#1A1A1A] top-0 left-0 z-40 w-full flex justify-between items-center px-9`}>
             <div className='w-[20%]'>
                 <Search />
             </div>

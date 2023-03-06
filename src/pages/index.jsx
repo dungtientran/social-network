@@ -1,13 +1,15 @@
 // 'use client';
 import CreatePost from '@/components/Posts/CreatePost';
-import FriendOnline from '@/components/FriendOnline';
 import Header from '@/components/Header/Header';
 import MessengerAll from '@/components/MessengerAll/MessengerAll';
-import PendingFriend from '@/components/PendingFriend';
 import ProfileCard from '@/components/ProfileCard';
 import Story from '@/components/Story/Story';
 import { SeverSideAxios } from '@/lib/axios';
 import React from 'react';
+import PendingFriend from '@/components/PendingFriend/PendingFriend';
+import { useDispatch } from 'react-redux';
+import { openModelSelect } from '@/redux/sliceRducer/modelSelectSlice';
+import FriendOnline from '@/components/FriendsOnline.jsx/FriendOnline';
 
 const listStory = [
   {
@@ -46,9 +48,11 @@ const listStory = [
 ]
 
 const Home = ({ messengerchatall, user }) => {
+  const distpatch = useDispatch();
+
 
   return (
-    <div>
+    <div onClick={() => distpatch(openModelSelect(false))}>
       <Header />
       <div className='flex justify-between min-h-screen mt-[100px] px-9'>
         <div className='max-w-[20%] px-3 h-full fixed top-0 left-0 pt-[100px]'>

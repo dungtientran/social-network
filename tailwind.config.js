@@ -15,6 +15,7 @@ module.exports = {
         'box': '#282828',
         'yl': '#FFFD01',
         'black-rgba': 'rgba(0, 0, 0, 0.7)',
+        'hover-bg': '#3A3B3C'
       }
     },
   },

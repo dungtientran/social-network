@@ -9,13 +9,10 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const Logout = () => {
     const { userProfile } = useSelector(state => state.user);
-    const [userId, setUserId] = useState();
     const dispatch = useDispatch();
     const router = useRouter();
-
-    useEffect(() => {
-        setUserId(JSON.parse(localStorage.getItem('userId')))
-    }, []); 
+    const userId = Cookies.get('userId')
+    // console.log(userId);
     useEffect(() => {
         if (userId) {
             dispatch(getUserProfileAction(userId))

@@ -42,7 +42,6 @@ const MessengerAll = ({ user, messengerchatall }) => {
      const handleSendMessernger = async (e) => {
         e.preventDefault();
         await axiosConfig.post('/api/messengerall/create', messengerSend);
-        socket.current.emit('send-msg', messengerSend);
         const msg = [...messenger];
         msg.push({ fromSelf: true, messenger: text, user: messengerSend.user })
         setMessenger(msg)
@@ -67,7 +66,7 @@ const MessengerAll = ({ user, messengerchatall }) => {
             <div className='py-2'>
                 <p>Chat tổng</p>
             </div>
-            <div className='h-[80%] p-3 bg-[#1f1f1f] flex flex-col gap-2 rounded-lg overflow-y-auto'>
+            <div className='h-[80%] p-3 bg-[#1f1f1f] flex flex-col gap-2 rounded-lg overflow-y-auto scrollChatAll'>
                 {messenger?.map((item, index) => (
                     <div ref={scrollRef} key={index}>
                         <div className={`flex items-center w-full ${item?.fromSelf ? 'justify-end text-red-500' : 'justify-start'}`}>

@@ -36,7 +36,7 @@ export const SeverSideAxios = (accessToken) => {
     });
     axiosServer.interceptors.request.use(function (config) {
         config.headers = {
-            token: accessToken
+            token: JSON.parse(accessToken)
         }
         return config;
     }, function (error) {
