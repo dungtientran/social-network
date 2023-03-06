@@ -1,7 +1,6 @@
 import CreatePost from '@/components/Posts/CreatePost';
 import Posts from '@/components/Posts/Posts';
 import { getPostUserAction } from '@/redux/sliceRducer/postSlice';
-import { getUserProfileAction } from '@/redux/sliceRducer/userSlice';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,13 +11,14 @@ import ProfileFriend from '@/components/Profile/ProfileFriend';
 import ProfileImage from '@/components/Profile/ProfileImage';
 import ProfoleVideo from '@/components/Profile/ProfoleVideo';
 import ProfileEdit from '@/components/Profile/ProfileEdit';
+import { SeverSideAxios } from '@/lib/axios';
+import ProfileIntroduce from '@/components/Profile/ProfileIntroduce';
 
 
-const Profile = () => {
+const Profile = ({userProfile}) => {
 
   const router = useRouter();
   const { id } = router.query;
-  const { userProfile } = useSelector(state => state.user);
   const { postUser } = useSelector(state => state.posts);
   const [isOpenModel, setIsOpenModel] = useState(false);
   const [keySelection, setKeySelection] = useState(1);
@@ -26,10 +26,8 @@ const Profile = () => {
   const dispatch = useDispatch();
   // console.log(id);
 
-
   useEffect(() => {
     if (id) {
-      dispatch(getUserProfileAction(id));
       dispatch(getPostUserAction(id));
     }
   }, [id]);
@@ -39,9 +37,9 @@ const Profile = () => {
   // console.log(userProfile);
   return (
     <div>
-      <Head>
+      {/* <Head>
         <title>{userProfile?.name} - Trang cá nhân</title>
-      </Head>
+      </Head> */}
 
       {/* Profile header */}
       <ProfileHead userProfile={userProfile} openModel={openModel} setKey={setKey} />
@@ -49,17 +47,8 @@ const Profile = () => {
       {/* Post */}
       {keySelection === 1 && (
         <div className='w-[70%] m-auto flex mt-6 gap-6'>
-          <div className='w-1/3 box p-3'>
-            <div>
-              <div>
-                <h1 className='text-2xl'>Giới thiệu</h1>
-              </div>
-              <div>
-                <p>
-                  <span></span>
-                </p>
-              </div>
-            </div>
+          <div className='w-1/3 box p-3 h-[250px]'>
+           <ProfileIntroduce user={userProfile} />
           </div>
           <div className='w-2/3'>
             <CreatePost user={userProfile} />
@@ -79,14 +68,15 @@ const Profile = () => {
 }
 
 
-// export const getServerSideProps = async({params}) => {
-//   const data = await apiGetUserProfile(params.id)
-//   console.log(data);
-//   return {
-//     props: {
-//       result: 123
-//     }
-//   }
-// }
+export const getServerSideProps = async(context) => {
+  const token = context.req.cookies.token;
+  const id = context.params.id;
+  const {data} = await SeverSideAxios(token).get(`api/user/profile/${id}`);
+  return {
+    props: {
+      userProfile: data
+    }
+  }
+}
 
 export default Profile

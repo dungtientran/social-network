@@ -13,7 +13,6 @@ const ProfileHead = ({userProfile, openModel, setKey}) => {
           alt=""
           className='w-full h-[70%] object-cover '
         />
-
         <div className='absolute w-[70%] m-auto bottom-0'>
           <div className='flex items-center justify-between'>
             <div className='flex items-center gap-4 z-20'>
