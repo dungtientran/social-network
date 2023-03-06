@@ -1,13 +1,13 @@
 import React from 'react'
-import Header from './Header'
-import NavBar from './NavBar'
+import Header from './Header/Header'
+import NavBar from './Header/NavBar'
 
-const Layout = ({children}) => {
+const Layout = ({ children }) => {
   return (
     <div>
-        {/* <NavBar /> */}
-        <Header />
-        {children}
+      {/* <NavBar /> */}
+      <Header />
+      {children}
     </div>
   )
 }

@@ -53,5 +53,16 @@
     .text-underline {
         @apply hover:underline cursor-pointer;
     }
+    .button-submit {
+        @apply bg-[#FFFCF9] text-black border hover:bg-black hover:text-white 
+        focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium text-sm w-full sm:w-auto px-5 py-2 text-center
+         dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 flex items-center justify-center gap-2;
+    }
+  
 }
 
+
+.date > p:not(:last-child)::after{
+    content: ',';
+    color: white;
+}

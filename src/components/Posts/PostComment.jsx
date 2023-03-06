@@ -3,8 +3,6 @@ import React, { useState } from 'react';
 
 
 const PostComment = ({ comments, user }) => {
-
-    
     
     return (
         <div className='p-3 w-full'>

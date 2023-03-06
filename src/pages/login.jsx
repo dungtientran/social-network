@@ -1,5 +1,7 @@
-import { apiUserLogin } from '@/lib/auth';
-import { userLoginAction } from '@/redux/sliceRducer/userSlice';
+import Loading from '@/components/Loading/Loading';
+import { apiUserLogin } from '@/lib/auth/auth';
+import { userLoginAction, userRegisterAction } from '@/redux/sliceRducer/userSlice';
+import Cookies from 'js-cookie';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React, { use, useEffect, useState } from 'react';
@@ -7,32 +9,28 @@ import { FcGoogle } from 'react-icons/fc'
 import { useDispatch, useSelector } from 'react-redux';
 
 
-
 const Login = () => {
   const [isLogin, setIsLogin] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const { isLoading, message } = useSelector(state => state.user)
+  // console.log(message);
   const dispatch = useDispatch();
   const router = useRouter();
-
-  const user = { name, email, password };
-
-  const {userInfor} = useSelector(state => state.user);
- 
-  const handleSubmit = async(e) => {
+  const token = Cookies.get('token');
+  let user
+  isLogin ? user = {name, email, password } : user = { email, password };
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(userLoginAction(user))
-    // const res = await apiUserLogin(user)
+    isLogin ? dispatch(userRegisterAction(user))
+      : dispatch(userLoginAction(user))
   }
-
   useEffect(() => {
-    if(userInfor){
+    if (token) {
       router.push("/")
     }
-  },[userInfor])
-
+  }, [token])
   return (
 
     <div className='bg-[#E6E8EF] md:bg-form flex justify-center items-center w-full h-screen overflow-hidden text-black'>
@@ -75,7 +73,7 @@ const Login = () => {
                       id="name"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="login-input" placeholder="Enter your email" required />
+                      className="login-input" placeholder="Enter your name" required />
                   </div>
                   <div>
                     <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
@@ -93,13 +91,17 @@ const Login = () => {
                       id="password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      className="login-input" placeholder='********' required />
+                      className="login-input" placeholder='Enter your password' required />
                   </div>
-                  <button
-                    type="submit"
-                    className="button-login">
-                    Đăng ký
-                  </button>
+                  {isLoading ? (
+                    <Loading />
+                  ) : (
+                    <button
+                      type="submit"
+                      className="button-login">
+                      Đăng ký
+                    </button>
+                  )}
                 </>
               ) :
                 (
@@ -120,18 +122,22 @@ const Login = () => {
                         id="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="login-input" placeholder='********' required />
+                        className="login-input" placeholder='Enter your password' required />
                     </div>
+                    {isLoading ? (
+                      <Loading />
+                    ) : (
+                      <button
+                        type="submit"
+                        className="button-login">
+                        Đăng nhập
+                      </button>
+                    )}
+
+
                     <button
                       type="submit"
-                      className="button-login">
-                      Đăng nhập
-                    </button>
-                    <button
-                      type="submit"
-                      className=" bg-[#FFFCF9] text-black border hover:bg-black hover:text-white 
-              focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium text-sm w-full sm:w-auto px-5 py-2 text-center
-               dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 flex items-center justify-center gap-2">
+                      className="button-submit">
                       <FcGoogle size={20} />
                       <span>Đăng nhập với Google</span>
                     </button>
@@ -146,6 +152,9 @@ const Login = () => {
             </p>
           </div>
         </div>
+      </div>
+      <div>
+
       </div>
 
       {/* mobile */}

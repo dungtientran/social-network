@@ -1,14 +1,18 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
+
+export const serverUrl = 'http://localhost:8081';
+
+
 export const axiosConfig = axios.create({
-    baseURL: 'http://localhost:8081'
+    baseURL: serverUrl
 });
 
 axiosConfig.interceptors.request.use(function (config) {
-    let token = JSON.parse(localStorage.getItem('token'))
-    // const tokenCookies = Cookies.get('token')
-    // const token = JSON.parse(tokenCookies) 
+    // let token = JSON.parse(localStorage.getItem('token'))
+    const tokenCookies = Cookies.get('token')
+    const token = JSON.parse(tokenCookies) 
     config.headers = {
         token: token
     }

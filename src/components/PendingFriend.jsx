@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 const PendingFriend = () => {
   const { userProfile } = useSelector(state => state.user);
 
-  console.log(userProfile);
+  // console.log(userProfile);
   return (
     <div className='box p-2'>
 

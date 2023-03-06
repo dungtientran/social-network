@@ -1,17 +1,15 @@
 
 import React, { useState } from 'react';
 import { AiOutlineSend } from 'react-icons/ai';
-import Model from './Model';
+import Model from '../Model';
 import PostComment from './PostComment';
-import PostItemtHead from './PostItemtHead';
+import PostItemtHead from '../PostItemtHead';
 import { apiPostComment } from '@/lib/post/postComment';
 import { getPostUserAction } from '@/redux/sliceRducer/postSlice';
 import { useDispatch } from 'react-redux';
 
 const PostItem = ({ post, user }) => {
-    // console.log(post);
     const [isOpenModelComment, setIsOpenModelComment] = useState(false);
-    // console.log(isOpenModelComment);
     const openModel = (item) => setIsOpenModelComment(item);
 
     const [comment, setComment] = useState();

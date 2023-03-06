@@ -1,17 +1,13 @@
 // 'use client';
-import CreatePost from '@/components/CreatePost';
+import CreatePost from '@/components/Posts/CreatePost';
 import FriendOnline from '@/components/FriendOnline';
-import Header from '@/components/Header';
-import MessengerAll from '@/components/MessengerAll';
+import Header from '@/components/Header/Header';
+import MessengerAll from '@/components/MessengerAll/MessengerAll';
 import PendingFriend from '@/components/PendingFriend';
-import Posts from '@/components/Posts';
 import ProfileCard from '@/components/ProfileCard';
-import Story from '@/components/Story';
-import { apiGetPost } from '@/lib/post/getPost';
-import { getUserProfileAction } from '@/redux/sliceRducer/userSlice';
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-
+import Story from '@/components/Story/Story';
+import { SeverSideAxios } from '@/lib/axios';
+import React from 'react';
 
 const listStory = [
   {
@@ -49,61 +45,23 @@ const listStory = [
 
 ]
 
-const user = {
-  avatar: 'https://res.cloudinary.com/dbkgkyh4h/image/upload/v1674980785/aztdhoncs6wzqlbb7tqz.jpg',
-  name: 'Dũng'
-}
-
-const Home = () => {
-  const [listPost, setListPost] = useState();
-  const [listPostSort, setListPostSort] = useState();
-  // useEffect(() => {
-  //   const fethGetPost = async() => {
-  //     const data = await apiGetPost();
-  //     // console.log(data);
-  //     setListPost(data?.data)
-  //   } 
-  //   fethGetPost() 
-  // },[]);
-
-  // useEffect(() => {
-  //   if(listPost) {
-  //     setListPostSort(listPost.reverse())
-  //   }
-  // },[listPost]);
-
-  const { userProfile } = useSelector(state => state.user);
-
-    const [userId, setUserId] = useState();
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        setUserId(JSON?.parse(localStorage.getItem('userId')))
-    }, []);
-    useEffect(() => {
-        if (userId) {
-            dispatch(getUserProfileAction(userId))
-        }
-    }, [userId]);
-
-    // console.log(userProfile);
-
+const Home = ({ messengerchatall, user }) => {
 
   return (
     <div>
       <Header />
       <div className='flex justify-between min-h-screen mt-[100px] px-9'>
-        <div className='min-w-[20%] px-3 h-full'>
-          <ProfileCard user={userProfile} />
-          <MessengerAll />
+        <div className='max-w-[20%] px-3 h-full fixed top-0 left-0 pt-[100px]'>
+          <ProfileCard user={user} />
+          <MessengerAll messengerchatall={messengerchatall} user={user} />
         </div>
         <div className='min-w-[60%] min-h-screen m-auto bg-[#1A1A1A] px-16'>
           <Story listStory={listStory} />
-          <CreatePost user={userProfile} />
+          <CreatePost user={user} />
           {/* <Posts listPost={listPostSort} /> */}
         </div>
-        <div className='min-w-[20%] h-full'>
-          <PendingFriend/>
+        <div className='min-w-[20%] h-full fixed top-0 right-0 pt-[100px]'>
+          <PendingFriend />
           <FriendOnline />
         </div>
       </div>
@@ -113,6 +71,19 @@ const Home = () => {
 }
 
 
+export const getServerSideProps = async (context) => {
+  const token = context.req.cookies.token;
+  const userId = context.req.cookies.userId;
+  const chatAll = await SeverSideAxios(token).get('/api/messengerall/get-message');
+  const user = await SeverSideAxios(token).get(`api/user/profile/${userId}`);
+  return {
+    props: {
+       messengerchatall: chatAll.data, 
+       user: user.data,
+      }
+  }
+
+}
 
 
 

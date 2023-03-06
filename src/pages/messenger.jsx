@@ -1,21 +1,14 @@
-import MesengerInput from '@/components/Messenger/MesengerInput'
-import MessengerLeft from '@/components/Messenger/MessengerLeft'
-import MessengerShow from '@/components/Messenger/MessengerShow'
-import { axiosConfig, SeverSideAxios } from '@/lib/axios'
-import React, { useEffect } from 'react'
-import { AiOutlineSend } from 'react-icons/ai'
-import { BsEmojiSmile } from 'react-icons/bs'
+import MessengerLeft from '@/components/Messenger/MessengerLeft';
+import { SeverSideAxios } from '@/lib/axios';
+import React from 'react';
+import { AiOutlineSend } from 'react-icons/ai';
+import { BsEmojiSmile } from 'react-icons/bs';
+
+
 
 const Messenger = ({ data }) => {
 
-    // useEffect(() => {
-    //     const featch = async () => {
-    //         const res = await axiosConfig.post('/api/messenger/get-message', { to: '64023df64e101a87e05bf29f' })
-    //         console.log(res);
-    //     }
-    //     featch()
-    // }, [])
-
+    const arr = ['t2', 't3', 't4', 't6', 't7']
 
 
     return (
@@ -38,9 +31,11 @@ const Messenger = ({ data }) => {
 
                         {data?.map((item, index) => (
                             <div key={index} className={`flex  items-center ${item?.fromSelf ? 'justify-end text-red-500' : ''}`}>
-                                <p className={``}>{item?.message}</p>
+                                <p className={`${item?.fromSelf ? 'justify-end bg-[#3E4042]' : ''}`}>{item?.message}</p>
                             </div>
-                        ))}               
+                        ))}
+                  
+
                 </div>
                 <div className='p-3 absolute left-0 bottom-0 w-full flex items-center gap-3'>
                     <div className='w-12 h-12 rounded-full'>
@@ -56,7 +51,11 @@ const Messenger = ({ data }) => {
                 </div>
             </div>
             <div className='w-1/5 text-center border-l'>
-                infor chat
+            <div className='date flex px-4'>
+                {arr.map((item, index) => (
+                    <p key={index}>{item}</p>
+                ))}
+            </div>
             </div>
         </div>
     )
@@ -64,8 +63,6 @@ const Messenger = ({ data }) => {
 
 export const getServerSideProps = async (context) => {
     const token = context.req.cookies.token
-    const prao = context.req
-    // console.log(prao);
     const res = await SeverSideAxios(token).post('/api/messenger/get-message', { to: '64023df64e101a87e05bf29f' })
     // console.log(res.data);
     return {

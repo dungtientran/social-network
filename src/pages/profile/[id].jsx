@@ -1,5 +1,5 @@
-import CreatePost from '@/components/CreatePost';
-import Posts from '@/components/Posts';
+import CreatePost from '@/components/Posts/CreatePost';
+import Posts from '@/components/Posts/Posts';
 import { getPostUserAction } from '@/redux/sliceRducer/postSlice';
 import { getUserProfileAction } from '@/redux/sliceRducer/userSlice';
 import { useRouter } from 'next/router';
@@ -11,6 +11,7 @@ import ProfileHead from '@/components/Profile/ProfileHead';
 import ProfileFriend from '@/components/Profile/ProfileFriend';
 import ProfileImage from '@/components/Profile/ProfileImage';
 import ProfoleVideo from '@/components/Profile/ProfoleVideo';
+import ProfileEdit from '@/components/Profile/ProfileEdit';
 
 
 const Profile = () => {
