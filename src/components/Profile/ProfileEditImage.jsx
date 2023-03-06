@@ -9,7 +9,7 @@ const ProfileEditImage = ({openModel, titleChage, nameInput}) => {
     const handleUpLoadImage = async(e) => {
         const files = [...e.target.files];  
         const imageArr = await uploadImage(files);
-        setListImage(imageArr)
+        setListImage(imageArr);
     };
 
     return (

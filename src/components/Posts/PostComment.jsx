@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 const PostComment = ({ comments, user }) => {
     
     return (
-        <div className='p-3 w-full'>
+        <div className='p-3 w-full '>
             <div className='bg-[#1F1F1F] p-3 py-4 rounded-md flex flex-col gap-3 w-full'>
                 {comments?.map((item, index) => (
                     <div key={index} className='flex gap-3'>

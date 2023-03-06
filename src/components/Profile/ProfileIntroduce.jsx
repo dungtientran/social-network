@@ -4,10 +4,10 @@ import {HiOutlineHome} from 'react-icons/hi'
 import { MdOutlineSubtitles } from 'react-icons/md';
 
 const ProfileIntroduce = ({user}) => {
-    console.log(user);
+    // console.log(user);
     return (
         <div className='p-4'>
-            <div className='px-4 '>
+            <div className='pb-2'>
                 <h1 className='text-2xl font-semibold'>Giới thiệu</h1>
             </div>
             <div className='space-y-3 mt-3'>

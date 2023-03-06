@@ -10,6 +10,7 @@ import PendingFriend from '@/components/PendingFriend/PendingFriend';
 import { useDispatch } from 'react-redux';
 import { openModelSelect } from '@/redux/sliceRducer/modelSelectSlice';
 import FriendOnline from '@/components/FriendsOnline.jsx/FriendOnline';
+import Posts from '@/components/Posts/Posts';
 
 const listStory = [
   {
@@ -55,16 +56,16 @@ const Home = ({ messengerchatall, user }) => {
     <div onClick={() => distpatch(openModelSelect(false))}>
       <Header />
       <div className='flex justify-between min-h-screen mt-[100px] px-9'>
-        <div className='max-w-[20%] px-3 h-full fixed top-0 left-0 pt-[100px]'>
+        <div className='max-w-[20%] px-3 h-full fixed top-0 left-6 pt-[100px]'>
           <ProfileCard user={user} />
           <MessengerAll messengerchatall={messengerchatall} user={user} />
         </div>
         <div className='min-w-[60%] min-h-screen m-auto bg-[#1A1A1A] px-16'>
           <Story listStory={listStory} />
           <CreatePost user={user} />
-          {/* <Posts listPost={listPostSort} /> */}
+          <Posts />
         </div>
-        <div className='min-w-[20%] h-full fixed top-0 right-0 pt-[100px]'>
+        <div className='min-w-[20%] h-full fixed top-0 right-6 pt-[100px]'>
           <PendingFriend />
           <FriendOnline />
         </div>
