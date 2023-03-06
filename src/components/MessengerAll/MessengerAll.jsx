@@ -47,7 +47,6 @@ const MessengerAll = ({ user, messengerchatall }) => {
         setMessenger(msg)
         socket.emit('sendMessenger', { fromSelf: false, messenger: text, user: messengerSend.user })
         setText('')
-
     }
 
    useEffect(() => {
@@ -90,6 +89,7 @@ const MessengerAll = ({ user, messengerchatall }) => {
                 <input type="text"
                     className='bg-[#1F1F1F] w-[80%] outline-none p-1 rounded-lg'
                     placeholder='Nói gì đê'
+                    value={text}
                     onChange={(e) => setText(e.target.value)}
                 />
                 <button>

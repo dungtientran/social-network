@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { AiOutlineSend } from 'react-icons/ai';
 import Model from '../Model';
 import PostComment from './PostComment';
-import PostItemtHead from '../PostItemtHead';
+import PostItemtHead from './PostItemtHead';
 import { apiPostComment } from '@/lib/post/postComment';
 import { getPostUserAction } from '@/redux/sliceRducer/postSlice';
 import { useDispatch } from 'react-redux';
@@ -33,7 +33,7 @@ const PostItem = ({ post, user }) => {
         <div className='p-3 bg-[#282828] rounded-lg space-y-3 w-full'>
 
             <PostItemtHead post={post} user={user} openModel={openModel} checkPostHeadIn={false} />
-            
+
             {/* Model */}
 
             {isOpenModelComment && <Model openModel={openModel} title={`Bài viết của ${user?.name}`} >
