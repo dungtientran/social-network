@@ -8,15 +8,15 @@ import { useDispatch } from 'react-redux';
 import { getPostUserAction } from '@/redux/sliceRducer/postSlice';
 import { useEffect } from 'react';
 import CreatePostModel from './CreatePostModel';
-import Model from '../Model';
+import Model from '../Model/Model';
 
 const CreatePost = ({ user }) => {
-    
+
     const [isOpenModelPost, setIsOpenModelPost] = useState(false);
     const [titlePost, setTitlePost] = useState('');
     const openModelPost = (item) => setIsOpenModelPost(item);
     useEffect(() => {
-        isOpenModelPost? document.body.style.overflow = 'hidden' : document.body.style.overflow= 'auto';
+        isOpenModelPost ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'auto';
     }, [isOpenModelPost]);
 
     return (

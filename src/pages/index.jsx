@@ -2,7 +2,7 @@
 import CreatePost from '@/components/Posts/CreatePost';
 import Header from '@/components/Header/Header';
 import MessengerAll from '@/components/MessengerAll/MessengerAll';
-import ProfileCard from '@/components/ProfileCard';
+import ProfileCard from '@/components/ProfileCard/ProfileCard';
 import Story from '@/components/Story/Story';
 import { SeverSideAxios } from '@/lib/axios';
 import React from 'react';

@@ -3,27 +3,28 @@ import React, { useState } from 'react';
 import { BsArrowsAngleContract, BsThreeDots, BsArrowsAngleExpand } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
 
-const DotSelect = ({ hadleZoom }) => {
-    const [isZoom, setIsZoom] = useState(false);
+const DotSelect = ({ hadleZoom, isOpenSubDot }) => {
+    const [isHidden, setIsHidden] = useState(false);
+    // const [isZoom, setIsZoom] = useState(false);
 
-    const distpatch = useDispatch();
+    // const distpatch = useDispatch();
 
-    const { isOpenModelSelect } = useSelector(state => state.openModelSelect);
-    const handleOpenModelSelect = (e) => {
-        e.stopPropagation();
-        distpatch(openModelSelect(!isOpenModelSelect));
-    }
-    const handleOnClickIsZoom = (e) => {
-        e.stopPropagation();
-        hadleZoom()
-        distpatch(openModelSelect(!isOpenModelSelect));
-        setIsZoom(!isZoom);
-    }
+    // const { isOpenModelSelect } = useSelector(state => state.openModelSelect);
+    // const handleOpenModelSelect = (e) => {
+    //     e.stopPropagation();
+    //     distpatch(openModelSelect(!isOpenModelSelect));
+    // }
+    // const handleOnClickIsZoom = (e) => {
+    //     e.stopPropagation();
+    //     hadleZoom()
+    //     distpatch(openModelSelect(!isOpenModelSelect));
+    //     setIsZoom(!isZoom);
+    // }
 
     return (
 
-        <div className='relative dotSelect'>
-            <span className='cursor-pointer ' onClick={handleOpenModelSelect}><BsThreeDots size={18} /></span>
+        <div className='relative '>
+            {/* <span className='cursor-pointer ' onClick={handleOpenModelSelect}><BsThreeDots size={18} /></span>
             {isOpenModelSelect && (
                 <div className='absolute min-w-[300px] top-[100%] right-[50%] bg-[#18191A] p-3 rounded-md'>
                     <div
@@ -36,7 +37,15 @@ const DotSelect = ({ hadleZoom }) => {
                         <p className='font-semibold text-lg'>{isZoom ? 'Mở rộng bảng điều khiển' : 'Thu gọn bảng điều khiển'}</p>
                     </div>
                 </div>
-            )}
+            )} */}
+
+            <div className='dotSelect relative'>
+                <span><BsThreeDots size={20} /></span>
+                <div className={` absolute min-w-[300px] top-[100%] right-[50%] bg-[#18191A] p-3 rounded-md ${isOpenSubDot ? 'block' : 'hidden'}`}>
+                    hello
+                </div>
+            </div>
+
         </div>
 
     )

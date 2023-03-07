@@ -1,15 +1,32 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { AiOutlineDislike, AiOutlineLike, AiOutlineMessage } from 'react-icons/ai';
 import moment from 'moment';
 import { BsThreeDots } from 'react-icons/bs';
+
 moment.locale('vi');
 
 function PostItemtHead({ post, user, openModel, checkPostHeadIn }) {
+    const [isOpenDot, setIsOpenDot] = useState(false);
+    const dotRef = useRef();
     const amountComment = post?.comments.length;
-    // console.log(post);
+    useEffect(() => {
+        let hadleClickOusideDot = (e) => {
+            if (!dotRef.current.contains(e.target)) {
+                setIsOpenDot(false)
+                // console.log(dotRef.current.contains(e.target));
+                console.log(1);
+            }
+        }
+        document.addEventListener('mousedown', hadleClickOusideDot)
+        return () => { 
+            document.removeEventListener('mousedown', hadleClickOusideDot) 
+        }
+
+    }, [])
+
     return (
         <div className='w-full'>
-            <div className='flex justify-between items-center w-full'>
+            <div className='flex justify-between items-center w-full' >
                 <div className='flex w-[95%] gap-5'>
                     <div title='Xem trang cá nhân' className='w-16 h-16 cursor-pointer'>
                         <img src={user?.avatar} alt="" className='w-16 h-16 object-cover rounded-lg' />
@@ -19,8 +36,13 @@ function PostItemtHead({ post, user, openModel, checkPostHeadIn }) {
                         <p title={moment(post?.createdAt).format('lll')} className='text-[#FFFD01] text-underline'>{moment(post?.createdAt).fromNow()}</p>
                     </div>
                 </div>
-                <div className='w-[5%]'>
-                    <BsThreeDots />
+                <div className='pr-3'>
+                    <div className='relative'  ref={dotRef}>
+                        <p className='dotSelect ' onClick={() => setIsOpenDot(!isOpenDot)}><BsThreeDots size={20} /></p>
+                        <div className={` absolute min-w-[300px] top-[100%] right-[50%] bg-[#18191A] p-3 rounded-md ${isOpenDot ? 'block' : 'hidden'}`}>
+                            hello
+                        </div>
+                    </div>
                 </div>
             </div>
             <div>
@@ -39,7 +61,7 @@ function PostItemtHead({ post, user, openModel, checkPostHeadIn }) {
             </div>
             <div className='flex items-center justify-between px-3 text-xs mt-1 mb-2'>
                 <p className='text-underline'>23 like</p>
-                <p className='text-underline'>2 đéo thích</p>
+                <p className='text-underline'>2 dislike</p>
             </div>
             <div className='flex items-center justify-between px-3  border-t border-gray-500 py-2 '>
                 <button className='flex items-center  hover:text-red-500 gap-1' title='Like'><AiOutlineLike size={22} /><span>Like</span></button>
@@ -55,7 +77,7 @@ function PostItemtHead({ post, user, openModel, checkPostHeadIn }) {
                         {amountComment} Bình luận
                     </button>
                 )}
-                <button className='flex items-center hover:text-yellow-500 gap-1' title='Như lờ'><AiOutlineDislike size={22} /><span>Như lờ</span></button>
+                <button className='flex items-center hover:text-yellow-500 gap-1' title='Như lờ'><AiOutlineDislike size={22} /><span>Dislike</span></button>
             </div>
         </div>
     );

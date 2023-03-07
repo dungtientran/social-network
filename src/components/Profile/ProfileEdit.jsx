@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { AiOutlineHeart, AiOutlineUser } from 'react-icons/ai';
 import { BsGenderFemale, BsTelephone } from 'react-icons/bs';
 import { HiOutlineHome } from 'react-icons/hi';
-import Model from '../Model';
+import Model from '../Model/Model';
 import ProfileEditImage from './ProfileEditImage';
 
 const ProfileEdit = ({ user }) => {
@@ -85,10 +85,10 @@ const ProfileEdit = ({ user }) => {
                             <AiOutlineUser size={25} className='text-[#8C939D]' />
 
                             {editProfile ? (
-                                <input type="text" 
-                                className='outline-none text-white bg-black px-2 rounded-md' 
-                                placeholder='Tên' 
-                                onChange={(e) => setName(e.target.value)} autoFocus />
+                                <input type="text"
+                                    className='outline-none text-white bg-black px-2 rounded-md'
+                                    placeholder='Tên'
+                                    onChange={(e) => setName(e.target.value)} autoFocus />
                             ) : (
                                 <span>
                                     {user?.name}

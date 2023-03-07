@@ -8,7 +8,7 @@ const Model = ({ title, openModel, children }) => {
             onClick={() => openModel()}
         >
             <div
-                className='w-[800px] max-h-screen box p-3 m-auto overflow-y-auto scrollChatAll'
+                className='w-[800px] max-h-[95vh] box p-3 m-auto overflow-y-auto scrollChatAll'
                 onClick={(e) => e.stopPropagation()}
             >
                 <div className='text-center py-4 border-b-[1px] border-gray-300'>

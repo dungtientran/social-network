@@ -28,7 +28,7 @@ const Logout = () => {
     return (
         <div className=' flex justify-end'>
             <div className='flex items-center gap-1'>
-                <div className='mr-6'>
+                <div title='Thông báo' className='mr-6 cursor-pointer'>
                     <MdOutlineNotifications size={26} />
                 </div>
                 <Link title='Trang cá nhân' href={`/profile/${userId}`} className='inline-block p-1 border border-[#1A1A1A] hover:border-[#FDFD01] rounded-full'>
@@ -39,7 +39,6 @@ const Logout = () => {
                     />
                 </Link>
                 <div className='py-1 px-7 bg-box rounded-lg hover:bg-black cursor-pointer'>
-                    {/* <IoIosArrowDropdown size={25} className='text-[#FFFD01]' /> */}
                     <button onClick={handleLogout}>Logout</button>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { AiOutlineSend } from 'react-icons/ai';
-import Model from '../Model';
+import Model from '../Model/Model';
 import PostComment from './PostComment';
 import PostItemtHead from './PostItemtHead';
 import { apiPostComment } from '@/lib/post/postComment';

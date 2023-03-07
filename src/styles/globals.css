@@ -18,7 +18,6 @@
     body::-webkit-scrollbar-thumb {
         background: #5E5E5F;
         border-radius: 100vh;
-        /* border: 3px solid #f6f7ed; */
 
     }
     /* body::-webkit-scrollbar-thumb:hover{
@@ -86,7 +85,7 @@
          dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 flex items-center justify-center gap-2;
     }
     .dotSelect {
-        @apply p-2 rounded-full hover:bg-hover-bg 
+        @apply p-2 rounded-full hover:bg-hover-bg  cursor-pointer;
     }
     .scrollChatAll::-webkit-scrollbar {
         @apply w-[8px] h-[10px] ;

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PostItem from './PostItem'
 
 const Posts = ({ listPost, user }) => {
