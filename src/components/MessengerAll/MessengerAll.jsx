@@ -61,7 +61,7 @@ const MessengerAll = ({ user, messengerchatall }) => {
     }, [messenger]);
 
     return (
-        <div className='rounded-[5%] bg-[#282828] md:h-[400px] lg:h-[450px] mt-4 p-3 relative'>
+        <div className='rounded-xl h-[48%] bg-[#282828] mt-4 p-3 relative'>
             <div className='py-2'>
                 <p>Chat tổng</p>
             </div>

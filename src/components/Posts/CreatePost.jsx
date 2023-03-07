@@ -11,9 +11,14 @@ import CreatePostModel from './CreatePostModel';
 import Model from '../Model';
 
 const CreatePost = ({ user }) => {
+    
     const [isOpenModelPost, setIsOpenModelPost] = useState(false);
     const [titlePost, setTitlePost] = useState('');
     const openModelPost = (item) => setIsOpenModelPost(item);
+    useEffect(() => {
+        isOpenModelPost? document.body.style.overflow = 'hidden' : document.body.style.overflow= 'auto';
+    }, [isOpenModelPost]);
+
     return (
         <div className='p-3 bg-[#282828] rounded-lg flex text-white'>
             <div className='w-[10%]'>

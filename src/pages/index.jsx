@@ -55,17 +55,17 @@ const Home = ({ messengerchatall, user }) => {
   return (
     <div onClick={() => distpatch(openModelSelect(false))}>
       <Header />
-      <div className='flex justify-between min-h-screen mt-[100px] px-9'>
-        <div className='max-w-[20%] px-3 h-full fixed top-0 left-6 pt-[100px]'>
+      <div className='home-page'>
+        <div className='home-sidebar-left'>
           <ProfileCard user={user} />
           <MessengerAll messengerchatall={messengerchatall} user={user} />
         </div>
-        <div className='min-w-[60%] min-h-screen m-auto bg-[#1A1A1A] px-16'>
+        <div className='list-post'>
           <Story listStory={listStory} />
           <CreatePost user={user} />
           <Posts />
         </div>
-        <div className='min-w-[20%] h-full fixed top-0 right-6 pt-[100px]'>
+        <div className='home-sidebar-right'>
           <PendingFriend />
           <FriendOnline />
         </div>
@@ -74,7 +74,6 @@ const Home = ({ messengerchatall, user }) => {
   )
 
 }
-
 
 export const getServerSideProps = async (context) => {
   const token = context.req.cookies.token;

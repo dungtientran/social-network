@@ -2,7 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 
-export const serverUrl = 'https://social-network-backend-1fab.onrender.com';
+export const serverUrl = 'http://localhost:8081';
 
 
 export const axiosConfig = axios.create({
@@ -32,7 +32,7 @@ axiosConfig.interceptors.response.use(function (response) {
 
 export const SeverSideAxios = (accessToken) => {
     const axiosServer = axios.create({
-        baseURL: 'https://social-network-backend-1fab.onrender.com'
+        baseURL: 'http://localhost:8081'
     });
     axiosServer.interceptors.request.use(function (config) {
         config.headers = {

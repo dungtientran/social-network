@@ -14,7 +14,7 @@ const initialState = {
 
 export const userRegisterAction = createAsyncThunk('userRegisterAction', async (user) => {
     try {
-        const response = await axios.post('https://social-network-backend-1fab.onrender.com/api/user/create', user)
+        const response = await axios.post('http://localhost:8081/api/user/create', user)
         console.log(response.data);
         return response.data;
     } catch (error) {
@@ -24,7 +24,7 @@ export const userRegisterAction = createAsyncThunk('userRegisterAction', async (
 
 export const userLoginAction = createAsyncThunk('login', async (user) => {
     try {
-        const response = await axios.post('https://social-network-backend-1fab.onrender.com/api/user/login', user)
+        const response = await axios.post('http://localhost:8081/api/user/login', user)
         // console.log(response.data);
         return response.data;
     } catch (error) {

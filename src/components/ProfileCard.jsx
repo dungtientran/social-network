@@ -3,11 +3,11 @@ import React from 'react'
 
 const ProfileCard = ({ user }) => {
   return (
-    <div className='rounded-[5%] bg-[#282828] h-[400px] relative'>
-      <div className='h-[30%] bg-black'>
+    <div className='rounded-xl h-[48%] bg-[#282828] relative'>
+      <div className='h-[30%] bg-black rounded-t-xl overflow-hidden'>
         <img
           src={user?.imageBg}
-          className='object-cover w-full h-full rounded-t-[5%]'
+          className='object-cover w-full h-full '
           alt=""
         />
       </div>

@@ -26,16 +26,19 @@
     } */
 }
 
-/* @layer utilities {
-    .homeScrollBar::-webkit-scrollbar {
-        width: 10px;
-        height: 10px;
-    }
-} */
-
-
 @layer components {
-
+    .home-page {
+        @apply flex justify-between h-screen mt-[100px] px-9;
+    }
+    .home-sidebar-left {
+        @apply w-[20%] p-3 flex flex-col justify-between fixed top-0 bottom-0 left-6 pt-[80px];
+    }
+    .home-sidebar-right {
+        @apply w-[20%] p-3 flex flex-col justify-between fixed top-0 bottom-0 right-6 pt-[80px] ;
+    }
+    .list-post{
+        @apply w-[50%] min-h-screen m-auto bg-[#1A1A1A];
+    }
     .box {
         @apply bg-box rounded-lg;
     }

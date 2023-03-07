@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AiOutlineSend } from 'react-icons/ai';
 import Model from '../Model';
 import PostComment from './PostComment';
@@ -9,10 +9,14 @@ import { getPostUserAction } from '@/redux/sliceRducer/postSlice';
 import { useDispatch } from 'react-redux';
 
 const PostItem = ({ post, user }) => {
+    const [comment, setComment] = useState();
     const [isOpenModelComment, setIsOpenModelComment] = useState(false);
     const openModel = (item) => setIsOpenModelComment(item);
 
-    const [comment, setComment] = useState();
+    useEffect(() => {
+        isOpenModelComment ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'auto';
+    }, [isOpenModelComment])
+    
     const dispatch = useDispatch();
     const handleComment = async (e) => {
         e.preventDefault();

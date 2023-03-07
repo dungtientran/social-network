@@ -11,7 +11,7 @@ const PendingFriend = () => {
 
   // console.log(userProfile);
   return (
-    <div className='box p-2'>
+    <div className='box p-2 w-full'>
 
       <div className='py-2 border-b-[1px] flex items-center justify-between'>
         <p>Lời mời kết bạn</p>

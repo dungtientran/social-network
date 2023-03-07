@@ -1,12 +1,12 @@
-import React from 'react'
-import Header from './Header/Header'
-import NavBar from './Header/NavBar'
+import { useRouter } from 'next/router';
+import React from 'react';
+import Header from './Header/Header';
 
 const Layout = ({ children }) => {
+  const router = useRouter();
   return (
     <div>
-      {/* <NavBar /> */}
-      <Header />
+      {router.pathname !== '/login' && <Header />}
       {children}
     </div>
   )

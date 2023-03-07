@@ -1,15 +1,13 @@
 import MessengerLeft from '@/components/Messenger/MessengerLeft';
 import { SeverSideAxios } from '@/lib/axios';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { AiOutlineSend } from 'react-icons/ai';
 import { BsEmojiSmile } from 'react-icons/bs';
 
 
 
 const Messenger = ({ data }) => {
-
-    const arr = ['t2', 't3', 't4', 't6', 't7']
-
+    
 
     return (
         <div className='flex pt-[100px] w-full h-screen border-t'>
@@ -51,11 +49,7 @@ const Messenger = ({ data }) => {
                 </div>
             </div>
             <div className='w-1/5 text-center border-l'>
-            <div className='date flex px-4'>
-                {arr.map((item, index) => (
-                    <p key={index}>{item}</p>
-                ))}
-            </div>
+           
             </div>
         </div>
     )

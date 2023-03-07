@@ -24,7 +24,11 @@ const Profile = ({userProfile}) => {
   const [keySelection, setKeySelection] = useState(1);
 
   const dispatch = useDispatch();
-  // console.log(id);
+
+  useEffect(() => {
+  isOpenModel ? document.body.style.overflow = 'hidden' : document.body.style.overflow= 'auto';
+
+  }, [isOpenModel])
 
   useEffect(() => {
     if (id) {
@@ -34,6 +38,8 @@ const Profile = ({userProfile}) => {
 
   const openModel = (item) => setIsOpenModel(item);
   const setKey = (item) => setKeySelection(item);
+
+
   // console.log(userProfile);
   return (
     <div>
@@ -41,7 +47,6 @@ const Profile = ({userProfile}) => {
         <title>{userProfile?.name} - Trang cá nhân</title>
       </Head> */}
 
-      {/* Profile header */}
       <ProfileHead userProfile={userProfile} openModel={openModel} setKey={setKey} />
 
       {/* Post */}
@@ -59,6 +64,8 @@ const Profile = ({userProfile}) => {
       {keySelection == 2 && <ProfileFriend />}
       {keySelection == 3 && <ProfileImage />}
       {keySelection == 4 && <ProfoleVideo />}
+
+
       {isOpenModel && <Model title={'Chỉnh sửa thông tin cá nhân'} openModel={openModel} user={userProfile} >
         <ProfileEdit user={userProfile} />
       </Model>}
