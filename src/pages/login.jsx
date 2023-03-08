@@ -1,10 +1,10 @@
 import Loading from '@/components/Loading/Loading';
-import { apiUserLogin } from '@/lib/auth/auth';
+import TextJump from '@/components/TextJump/TextJump';
 import { userLoginAction, userRegisterAction } from '@/redux/sliceRducer/userSlice';
 import Cookies from 'js-cookie';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import React, { use, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FcGoogle } from 'react-icons/fc'
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -14,18 +14,30 @@ const Login = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { isLoading, message } = useSelector(state => state.user)
-  // console.log(message);
+  const [isTexJump, setIsTextJump] = useState(false);
+
+  const { isLoading, message, err } = useSelector(state => state.user);
+
   const dispatch = useDispatch();
   const router = useRouter();
   const token = Cookies.get('token');
   let user
-  isLogin ? user = {name, email, password } : user = { email, password };
+  isLogin ? user = { name, email, password } : user = { email, password };
   const handleSubmit = async (e) => {
     e.preventDefault();
     isLogin ? dispatch(userRegisterAction(user))
-      : dispatch(userLoginAction(user))
+      : dispatch(userLoginAction(user));
   }
+  useEffect(() => {
+    isLoading ? setIsTextJump(true) : setIsTextJump(false);
+    if(message){
+      alert(message)
+    }
+    if(err === 0) {
+      setIsLogin(false)
+    }
+  }, [isLoading, message, err]);
+
   useEffect(() => {
     if (token) {
       router.push("/")
@@ -38,9 +50,9 @@ const Login = () => {
         <title>{isLogin ? 'Đăng ký' : 'Đăng nhập'}</title>
       </Head>
       {/* website */}
-      <div className='min-w-[70%] bg-white min-h-[70%] md:flex hidden relative'>
+      <div className=' w-[90%] md:w-[70%] overflow-hidden bg-white min-h-[70%] md:flex relative'>
         {/* banner */}
-        <div className={`banner-login z-50 ${isLogin && 'translate-x-[100%] bg-[#ff4b28] z-50'}`}>
+        <div className={`banner-login z-50 hidden md:flex ${isLogin && 'translate-x-[100%] bg-[#ff4b28]'}`}>
           <div className='space-y-4 text-center'>
             <h1 className='text-3xl font-semibold text-white'>
               {isLogin ? (<span>Welcome</span>) : (<><span>Hello, </span><span>Friend!</span></>)}
@@ -57,13 +69,14 @@ const Login = () => {
           </div>
         </div>
         {/* form login */}
-        <div className={`form-login ${isLogin && 'translate-x-[-100%]'}`}>
+        <div className={`form-login ${isLogin && 'md:translate-x-[-100%]'}`}>
           <div className='text-center'>
             <p className='text-sm'></p>
           </div>
           <div>
-            <h1 className='text-3xl h-[10%] p-10 flex items-center justify-center'>{isLogin ? 'Đăng ký' : 'Đăng nhập'}</h1>
-            <form className='h-[80%] flex flex-col gap-7 w-[60%] m-auto' onSubmit={handleSubmit}>
+            <h1 className={`${isTexJump ? 'hidden' : 'block'} text-3xl h-[10%] p-10 flex items-center justify-center`}>{isLogin ? 'Đăng ký' : 'Đăng nhập'}</h1>
+            <h1 className={`${isTexJump ? 'block' : 'hidden'}`}>{isLogin ? <TextJump text='Đăng ký...' /> : <TextJump text='Đăng nhập...' />}</h1>
+            <form className='h-[80%] flex flex-col gap-7 w-[90%] md:w-[60%] m-auto' onSubmit={handleSubmit}>
               {isLogin ? (
                 <>
                   <div>
@@ -158,7 +171,7 @@ const Login = () => {
       </div>
 
       {/* mobile */}
-      <div className='md:hidden w-[60%] h-[70%] bg-[#F5F0F1] rounded-xl border-[2px] border-white relative overflow-hidden'>
+      {/* <div className='md:hidden w-[60%] h-[70%] bg-[#F5F0F1] rounded-xl border-[2px] border-white relative overflow-hidden'>
         <div className='flex justify-center w-full h-full mt-3'>
           <form className='mb-login-form'>
             <h1 className='text-2xl font-bold text-center'>Hello Again</h1>
@@ -244,7 +257,7 @@ const Login = () => {
           </form>
         </div>
 
-      </div>
+      </div> */}
 
     </div>
   )

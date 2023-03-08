@@ -102,7 +102,25 @@
 
 
 
-.date > p:not(:last-child)::after{
-    content: ',';
-    color: white;
+.textJump span {
+    animation: jump 0.8s ease-in-out infinite;
+    animation-delay: calc(0.1s * var(--i));
+}
+
+
+@keyframes jump
+{
+    0%
+    {
+        transform: translateY(0px);
+    }
+    20%
+    {
+        transform: translateY(-15px);
+    }
+    40%, 100%
+    {
+        transform: translateY(0px);
+    }
+ 
 }

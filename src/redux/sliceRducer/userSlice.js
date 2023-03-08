@@ -8,6 +8,7 @@ import Cookies from 'js-cookie';
 const initialState = {
     isLoading: false,
     message: null,
+    err: null,
     userInfor: null,
     userProfile: null
 }
@@ -73,6 +74,7 @@ const authSlice = createSlice({
                 state.isLoading = false;
                 state.userInfor = action.payload;
                 state.message = action.payload.message;
+                state.err = action.payload.err
             })
             .addCase(userRegisterAction.rejected, (state, action) => {
                 state.isLoading = false;

@@ -4,7 +4,7 @@ import { MdOutlineCancel } from 'react-icons/md';
 const Model = ({ title, openModel, children }) => {
     return (
         <div
-            className='bg-black-rgba fixed top-0 left-0 w-full h-full z-50 flex items-center justify-center'
+            className='bg-black-rgba fixed top-0 left-0 bottom-0 w-full h-screen z-50 flex items-center justify-center'
             onClick={() => openModel()}
         >
             <div
