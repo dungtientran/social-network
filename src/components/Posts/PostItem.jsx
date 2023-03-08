@@ -18,6 +18,7 @@ const PostItem = ({ post, user }) => {
     }, [isOpenModelComment])
     
     const dispatch = useDispatch();
+    
     const handleComment = async (e) => {
         e.preventDefault();
         const sendCmt = {

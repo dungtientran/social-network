@@ -1,19 +1,33 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { AiOutlineDislike, AiOutlineLike, AiOutlineMessage } from 'react-icons/ai';
 import moment from 'moment';
-import { BsThreeDots } from 'react-icons/bs';
+import { BsFlag, BsThreeDots } from 'react-icons/bs';
+import { BiCommentX } from 'react-icons/bi';
 
 moment.locale('vi');
 
 function PostItemtHead({ post, user, openModel, checkPostHeadIn }) {
     const [isOpenDot, setIsOpenDot] = useState(false);
+    const [isLike, setIsLike] = useState(false);
+    const [isDisLike, setIsDisLike] = useState(false);
+    
+    const handleLike = () => {
+        setIsLike(!isLike);
+        setIsDisLike(false);
+    }
+    const handleDisLike = () => {
+        setIsDisLike(!isDisLike);
+        setIsLike(false);
+    }
+
+
     const dotRef = useRef();
     const amountComment = post?.comments.length;
+
     useEffect(() => {
         let hadleClickOusideDot = (e) => {
             if (!dotRef.current.contains(e.target)) {
                 setIsOpenDot(false)
-                // console.log(dotRef.current.contains(e.target));
                 console.log(1);
             }
         }
@@ -22,7 +36,7 @@ function PostItemtHead({ post, user, openModel, checkPostHeadIn }) {
             document.removeEventListener('mousedown', hadleClickOusideDot) 
         }
 
-    }, [])
+    }, []);
 
     return (
         <div className='w-full'>
@@ -39,8 +53,10 @@ function PostItemtHead({ post, user, openModel, checkPostHeadIn }) {
                 <div className='pr-3'>
                     <div className='relative'  ref={dotRef}>
                         <p className='dotSelect ' onClick={() => setIsOpenDot(!isOpenDot)}><BsThreeDots size={20} /></p>
-                        <div className={` absolute min-w-[300px] top-[100%] right-[50%] bg-[#18191A] p-3 rounded-md ${isOpenDot ? 'block' : 'hidden'}`}>
-                            hello
+                        <div className={` absolute min-w-[200px] shadow-xl  top-[100%] right-[50%] bg-[#18191A] px-3 py-2 rounded-sm ${isOpenDot ? 'block' : 'hidden'}`}>
+                            <div className='absolute  right-0 top-[-10%] w-0 h-0 border-b-[15px] border-b-[#18191A] border-l-[15px] border-l-transparent'></div>
+                            <button className='w-full hover:bg-hover-bg px-2 flex items-center py-3 border-b gap-2'> <BsFlag size={20}/> <span>Lưu bài viết</span></button>
+                            <button className='w-full hover:bg-hover-bg px-2 flex items-center py-3 border-b gap-2'> <BiCommentX size={20}/> <span>Ẩn bài viết</span></button>
                         </div>
                     </div>
                 </div>
@@ -64,7 +80,7 @@ function PostItemtHead({ post, user, openModel, checkPostHeadIn }) {
                 <p className='text-underline'>2 dislike</p>
             </div>
             <div className='flex items-center justify-between px-3  border-t border-gray-500 py-2 '>
-                <button className='flex items-center  hover:text-red-500 gap-1' title='Like'><AiOutlineLike size={22} /><span>Like</span></button>
+                <button onClick={handleLike} className={`flex items-center gap-1 ${isLike && 'text-red-500'}`} title='Like'><AiOutlineLike size={22} /><span>Like</span></button>
                 {checkPostHeadIn ? (
                     <button
                         className='flex items-center hover:text-yellow-500 gap-1' title='Gửi tin nhắn'><AiOutlineMessage size={22} />
@@ -77,7 +93,7 @@ function PostItemtHead({ post, user, openModel, checkPostHeadIn }) {
                         {amountComment} Bình luận
                     </button>
                 )}
-                <button className='flex items-center hover:text-yellow-500 gap-1' title='Như lờ'><AiOutlineDislike size={22} /><span>Dislike</span></button>
+                <button onClick={handleDisLike} className={`flex items-center gap-1 ${isDisLike && 'text-red-700'}`} title='Như lờ'><AiOutlineDislike size={22} /><span>Dislike</span></button>
             </div>
         </div>
     );

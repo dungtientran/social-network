@@ -62,10 +62,10 @@ const MessengerAll = ({ user, messengerchatall }) => {
 
     return (
         <div className='rounded-xl h-[48%] bg-[#282828] mt-4 p-3 relative'>
-            <div className='py-2'>
+            <div className='pb-1'>
                 <p>Chat tổng</p>
             </div>
-            <div className='h-[80%] p-3 bg-[#1f1f1f] flex flex-col gap-2 rounded-lg overflow-y-auto scrollChatAll'>
+            <div className='h-[80%] px-3 pb-3 bg-[#1f1f1f] flex flex-col gap-2 rounded-lg overflow-y-auto scrollChatAll'>
                 {messenger?.map((item, index) => (
                     <div ref={scrollRef} key={index}>
                         <div className={`flex items-center w-full ${item?.fromSelf ? 'justify-end text-red-500' : 'justify-start'}`}>
